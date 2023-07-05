@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h4 style="text-align: center;">Login</h4>
+    <div style="margin-top: 40px;">
+        <form method="POST">
+            {% csrf_token %}
+            <div style="margin-top: 10px;">
+                <Label>Username</Label>
+                <input type="text" name="username"/>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <Label>Password</Label>
+                <input type="password" name="password"/>
+            </div>
+            <div style="margin-top: 10px;">
+               <button type="submit">Enregistrer</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

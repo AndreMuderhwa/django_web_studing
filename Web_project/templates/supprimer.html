@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer</title>
+</head>
+<body>
+    <h2>Voulez-vous supprimer "{{fondateur}}"?</h2>
+    <form method="POST" action="{% url 'supprimer_fondateur' fondateur.id_fondateur %}">
+        {% csrf_token %}
+        <h4><a href="{% url 'home' %}">Annuler</a></h4>
+        <button type="submit">Confirmer</button>
+
+    </form>
+</body>
+</html>

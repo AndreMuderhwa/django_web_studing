@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site</title>
+     <!-- <link rel="stylesheet" href="{% static 'css/style.css'%}"/> -->
+
+</head>
+<body>
+    <h1>Bienvenue</h1>
+<h2>Liste des fondateurs</h2>
+   <table>
+        <tr>
+            <th>Nom</th>
+            <th>Postnom</th>
+            <th>Prenom</th>
+            <th>Photo</th>
+            <th>Date de Naissance</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        
+        {% for f in  fondateurs %}
+        <tr>
+            <td>{{f.nom}}</td>
+            <td>{{f.postnom}}</td>
+            <td>{{f.prenom}}</td>
+            <td><img src="/images/{{f.photo}}" style="border-radius:50%;" width=30px height=30px /></td>
+            <td>{{f.dateNaissance}}</td>
+            <td>{{f.description}}</td>
+            <td><a href="{% url 'modifier_fondateur' f.id_fondateur %}">Modifier</a></td>
+            <td><a href="{% url 'supprimer_fondateur' f.id_fondateur %}">Supprimer</a></td>
+        </tr>
+            
+        {% endfor %}
+            
+   </table>
+
+<hr>
+<a href="{% url 'ajouter_fondateur' %}">Ajouter nouveau fondateur</a>
+{% comment %} 
+<form method="POST" action="{% url 'ajouter_fondateur' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+<table>
+<tr>
+    <td><label for="nom">Nom</label></td>
+    <td><input type="text" name="nom"></td>
+</tr>
+<tr>
+    <td><label for="postnom">Postnom</label></td>
+    <td><input type="text" name="postnom"></td>
+</tr>
+<tr>
+    <td><label for="prenom">Prenom</label></td>
+    <td><input type="text" name="prenom"></td>
+</tr>
+<tr>
+    <td><label for="photo">Photo</label></td>
+    <td><input type="file" name="photo"></td>
+</tr>
+<tr>
+    <td><label for="date">Date de naissance</label></td>
+    <td><input type="date" name="date"></td>
+</tr>
+
+<tr>
+    <td><label for="des">Description</label></td>
+    <td><input type="text" name="description"></td>
+</tr>
+
+<tr>
+   <td><button type="submit">Enregistrer</button></td> 
+</tr>
+</table>
+
+</form> {% endcomment %}
+
+
+</body>
+</html>
